@@ -49,6 +49,12 @@ async fn handle_message(cx: UpdateWithCx<Bot, Message>) {
                         .await;
                 }
             }
+        } else {
+            cx.answer("You do not have permission to use this bot.")
+                .send()
+                .await
+                .log_on_error()
+                .await;
         }
     }
     println!("Some text {:?}", Some(()));
